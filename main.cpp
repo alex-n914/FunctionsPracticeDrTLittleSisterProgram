@@ -18,9 +18,14 @@ using namespace std;
 
 //$_earned       mom  dad
 double MakeBank(bool,bool); //function prototype
+void welcomeMessage();
+void dayOfTheWeek(int);
 
 int main()
 {
+  
+  int dayInput = 0; // accept input from user
+  welcomeMessage(); //fuction call 
     //function calls (true = "yes", false="no"
     cout << "\nLittle Sister Function calls: ";
     cout << "\nOption 1, Little Sister Earns: $" << MakeBank(true,false);
@@ -37,6 +42,10 @@ int main()
       6. Extend this program set the precision of the numberCube result to 4 decimal places
       7. Loop the program until exit conditions 'E' AND 'e', clear the screen upon each loop #include<cstdlib> system("cls");
     */
+    cout << "Please enter a day of the week (1-7): ";
+    cin >> dayInput;
+    dayOfTheWeek(dayInput); //pass argument provided by user
+
     return 0;
 }
 
@@ -44,8 +53,71 @@ double MakeBank(bool mom, bool dad)
 {
 	double amtEarned = 0.0; //what sister can get from parents
 	//handle each scenario How much does Little Sister earn $20 increments.
+  if(mom == true)
+  {
+    amtEarned += 20.0;
+  }
+  if (dad == true)
+  {
+    amtEarned += 20.0;
+  }
+  if (mom == false)
+  {
+    amtEarned += 0.0;
+  }
+  if (dad == false)
+  {
+    amtEarned += 0.0;
+  }
 
 	return amtEarned;
 }
 
-
+void welcomeMessage()
+{
+  cout << "\nMoney Money Money Money!!!!" << endl;
+  for(int i = 1; i < 25; i++)
+  {
+    cout << "*";
+  }
+  cout << endl;
+}
+void dayOfTheWeek (int day)
+{
+  if(day == 1)
+  {
+    cout << "\x1b[32;1m\nIt's Sunday!\x1b[0m\n" << endl;
+  }
+  else if(day == 2)
+  {
+    cout << "\033[32m\033[40m\033[7m\nIt's Monday!" << endl;
+  }
+  else if(day == 3)
+  {
+    cout << "\033[33m\033[47m\033[7m\nIt's Tuesday!" << endl;
+  }
+  else if(day == 4)
+  {
+    cout << "\033[37m\033[45m\nIt's Wednesday!" << endl;
+  }
+  else if (day == 5)
+  {
+    cout << "\033[1m\033[31m\033[3m\nIt's Thursday!" << endl;
+  }
+  else if (day == 6)
+  {
+    cout << "\033[7m\033[31m\nIt's Friday!" << endl;
+  }
+  else if (day == 7)
+  {
+    cout << "\n\033[31m\nIt's Saturday!" << endl;
+  }
+  else if (day <= 8)
+  {
+    cout << "\nYou have entered an invalid day of the week." << endl;
+  }
+  else if (day >= 0)
+  {
+    cout << "\nYou have entered an invalid day of the week." << endl;
+  }
+}
